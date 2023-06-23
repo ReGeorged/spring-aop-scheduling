@@ -10,6 +10,23 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class AspectLogger {
+    // POINTCUTS ARE ALWAYS DUMMIES - NO BODY
+
+
+    //ANNOTATIONS
+
+    @Pointcut("@annotation(com.example.demo.annotationsaop.Loggable)")
+    public void loggableAnnotationPointCut(){
+    }
+
+    @Before("loggableAnnotationPointCut()")
+    public void beforeLoggableAnnotation(){
+        System.out.println("BEFORE LOGGABLE ANNOTATION ");
+    }
+    @After("loggableAnnotationPointCut()")
+    public void afterLoggableAnnotation(){
+        System.out.println("after LOGGABLE ANNOTATION ");
+    }
 
 
 
@@ -19,7 +36,7 @@ public class AspectLogger {
 //        System.out.println("argument passed was : " +fancyArgs);
 //        System.out.println(" i am behind");
 //    }
-
+// -------------------------------------------------------------------------------------------------------------------------------
 
     @Around("allDos()")
     public void around(JoinPoint joinPoint){
